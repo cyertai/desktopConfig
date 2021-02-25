@@ -1,0 +1,103 @@
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set nocompatible  "Kill vi-compatibility
+set t_Co=256 "256 color
+set encoding=utf-8 "UTF-8 character encoding
+
+" Indent 4 spaces
+set tabstop=4  "4 space tabs
+set shiftwidth=4  "4 space shift
+set softtabstop=4  "Tab spaces in no hard tab mode
+set expandtab  " Expand tabs into spaces
+set autoindent  "autoindent on new lines
+
+set showmatch  "Highlight matching braces
+
+set ruler  "Show bottom ruler
+
+set equalalways  "Split windows equal size
+
+set formatoptions=croq  "Enable comment line auto formatting
+
+set title  "Set window title to file
+set hlsearch  "Highlight on search
+set ignorecase  "Search ignoring case
+set smartcase  "Search using smartcase
+set incsearch  "Start searching immediately
+
+set scrolloff=5  "Never scroll off
+set wildmode=longest,list  "Better unix-like tab completion
+set clipboard=unnamed  "Copy and paste from system clipboard
+set lazyredraw  "Don't redraw while running macros (faster)
+set wrap  "Visually wrap lines
+set linebreak  "Only wrap on 'good' characters for wrapping
+set backspace=indent,eol,start  "Better backspacing
+set linebreak  "Intelligently wrap long files
+set ttyfast  "Speed up vim
+set nostartofline "Vertical movement preserves horizontal position
+set paste
+set number
+
+
+" Strip whitespace from end of lines when writing file
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Syntax highlighting and stuff
+syntax on
+filetype plugin indent on
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+"
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+"
+"   " Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+"
+"   " Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+"
+"   " Let NeoBundle manage NeoBundle
+"   " Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+"
+"   " My Bundles here:
+"   " Refer to |:NeoBundle-examples|.
+"   " Note: You don't set neobundle setting in .gvimrc!
+
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'itchyny/lightline.vim'
+
+call neobundle#end()
+"
+"   " Required:
+filetype plugin indent on
+"
+"   " If there are uninstalled bundles found on startup,
+"   " this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
+set background=dark
+if exists('+termguicolors')
+    set termguicolors
+endif
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+
+set laststatus=2
+if !has('gui_running')
+      set t_Co=256
+endif
+set noshowmode
+"set number
+
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+set colorcolumn=80
+set timeout timeoutlen=1000 ttimeoutlen=100
